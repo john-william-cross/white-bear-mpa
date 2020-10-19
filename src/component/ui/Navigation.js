@@ -1,6 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navigation() {
+   const url = window.location.pathname;
+   console.log(url);
+   const tabActiveOnCreate = (url) => {
+      if (
+         url.indexOf("create-imagery") > 0 ||
+         url.indexOf("create-answer") > 0
+      ) {
+         return "tab-active";
+      } else return "";
+   };
+   const tabActiveOnReview = (url) => {
+      if (
+         url.indexOf("review-imagery") > 0 ||
+         url.indexOf("review-answer") > 0 ||
+         url.indexOf("review-answer") > 0
+      ) {
+         return "tab-active";
+      } else return "";
+   };
+   const tabActiveOnAllCards = (url) => {
+      if (url.indexOf("all-cards") > 0) {
+         return "tab-active";
+      } else return "";
+   };
    return (
       <>
          <div
@@ -8,21 +33,30 @@ export default function Navigation() {
             role="navigation"
             aria-label="navigation"
          >
-            <a href="/create-answer.html" className="btn btn-secondary">
+            <Link
+               to="/create-imagery"
+               className={`btn btn-secondary ${tabActiveOnCreate(url)}`}
+            >
                Create new
-            </a>
-            <a
-               href="/review-imagery.html"
-               className="btn btn-secondary tab-separator"
+            </Link>
+            <Link
+               to="/review-imagery"
+               //    href="/review-imagery"
+               className={`btn btn-secondary tab-separator ${tabActiveOnReview(
+                  url
+               )}`}
             >
                Review
-            </a>
-            <a
-               href="/all-cards.html"
-               className="btn btn-secondary tab-separator"
+            </Link>
+            <Link
+               to="/all-cards"
+               //    href="/all-cards.html"
+               className={`btn btn-secondary tab-separator ${tabActiveOnAllCards(
+                  url
+               )}`}
             >
                All cards
-            </a>
+            </Link>
          </div>
       </>
    );

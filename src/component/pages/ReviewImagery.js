@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../ui/Header";
 import Navigation from "../ui/Navigation";
 import AppTemplate from "../ui/AppTemplate";
+import { Link } from "react-router-dom";
 
 export default function ReviewImagery() {
    return (
@@ -21,13 +22,14 @@ export default function ReviewImagery() {
 
          <button className="btn btn-link">Previous card</button>
          <div className="float-right">
-            <a
-               onClick="location.href='review-answer.html'"
+            <Link
+               to="review-imagery"
+               onClick="location.href='review-imagery.html'"
                type="button"
                className="btn btn-outline-primary"
             >
                Show Answer
-            </a>
+            </Link>
          </div>
       </AppTemplate>
    );
