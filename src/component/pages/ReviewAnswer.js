@@ -1,5 +1,6 @@
 import React from "react";
-
+import thumbsUpIcon from "../../icons/thumbs-up.svg";
+import Header from "../ui/Header";
 export default function ReviewAnswer() {
    return (
       <div className="container">
@@ -7,16 +8,7 @@ export default function ReviewAnswer() {
             <div className="col-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                {/* in the line above, the  row has a width of 6; the offset of 3 puts 3 empty columns
           on both sides of the content, effectively centering it//// mx-auto also works--> */}
-               <img
-                  src="/icons/logo-app.svg"
-                  width="32px"
-                  alt="White Bear logo"
-               />
-               <h3 className="d-inline text-brand text-dark">White Bear</h3>
-               <a href="/index.html" className="btn btn-link float-right">
-                  Log out
-               </a>
-               <div className="clearfix"></div>
+               <Header />
                {/* <!-- <div className="clearfix"></div> this is one option to clear floats--> */}
 
                <div
@@ -74,9 +66,9 @@ export default function ReviewAnswer() {
                   </a>
                   <a href="/review-empty.html" className="btn btn-primary ml-4">
                      <img
-                        src="icons/thumbs-up.svg"
+                        src={thumbsUpIcon}
                         width="20px"
-                        style={{ marginBottom: "5px", marginRight: "4px" }}
+                        style={{ marginBottom: "5px", marginRight: "8px" }}
                         alt=""
                      />
                      Got it
