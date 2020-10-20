@@ -12,21 +12,23 @@ import Edit from "./component/pages/Edit";
 import NotFound from "./component/pages/NotFound";
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/create-answer" component={CreateAnswer} />
-        <Route exact path="/create-imagery" component={CreateImagery} />
-        <Route exact path="/review-imagery" component={ReviewImagery} />
-        <Route exact path="/review-answer" component={ReviewAnswer} />
-        <Route exact path="/review-empty" component={ReviewEmpty} />
-        <Route exact path="/all-cards" component={AllCards} />
-        <Route exact path="/edit" component={Edit} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
-  );
+   return (
+      <Router>
+         <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/create-answer" component={CreateAnswer} />
+            <Route exact path="/create-imagery" component={CreateImagery} />
+            <Route exact path="/review-imagery" component={ReviewImagery} />
+            <Route exact path="/review-answer" component={ReviewAnswer} />
+            <Route exact path="/review-empty" component={ReviewEmpty} />
+            <Route exact path="/all-cards" component={AllCards} />
+            <Route exact path="/edit" component={Edit} />
+            <Route component={NotFound} />
+            {/* is the above line supposed to be:   
+         <Route exact path="/not-found" component={NotFound} /> */}
+         </Switch>
+      </Router>
+   );
 }
 
 export default App;
