@@ -23,8 +23,8 @@ export default function ReviewImagery() {
          <button className="btn btn-link">Previous card</button>
          <div className="float-right">
             <Link
-               to="review-imagery"
-               onClick="location.href='review-imagery.html'"
+               to="review-answer"
+               //  onClick="location.href='review-imagery.html'"
                type="button"
                className="btn btn-outline-primary"
             >

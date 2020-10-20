@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../ui/Header";
 import Navigation from "../ui/Navigation";
 import AppTemplate from "../ui/AppTemplate";
+import { Link } from "react-router-dom";
 
 export default function CreateAnswer() {
    return (
@@ -32,13 +33,13 @@ export default function CreateAnswer() {
          </p>
          <div className="clearfix"></div>
 
-         <a
+         <Link
+            to="/create-imagery"
             id="click-next"
-            href="/create-imagery.html"
             className="disabled btn btn-lg btn-outline-primary float-right"
          >
             Next
-         </a>
+         </Link>
       </AppTemplate>
    );
 }
