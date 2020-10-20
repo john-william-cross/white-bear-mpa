@@ -10,12 +10,11 @@ export default function Landing() {
                <div className="row">
                   <div className="col-12 col-xl-6 col-lg-8 col-md-10 mt-7 mb-7">
                      <img
-                        className="mt-n6"
+                        className="landing-page-logo mt-n6"
                         src={appLogo}
-                        style={{ width: "165px" }}
                         alt="White Bear Logo"
                      />
-                     <h1 className="d-inline">White Bear</h1>
+                     <h1 className="landing-page-title d-inline">White Bear</h1>
                   </div>
 
                   <div className="row mx-auto">

@@ -14,6 +14,36 @@ Example:
 </div>
 
 */
+
+.landing-page-logo {
+   @include media-breakpoint-only(xs) {
+      margin-top: -20px !important;
+      margin-right: 5px !important;
+      width: 75px;
+   }
+   @include media-breakpoint-only(sm) {
+   }
+   @include media-breakpoint-only(md) {
+   }
+   @include media-breakpoint-only(lg) {
+   }
+   @include media-breakpoint-only(xl) {
+   }
+}
+.landing-page-title {
+   @include media-breakpoint-only(xs) {
+      font-size: 40px;
+   }
+   @include media-breakpoint-only(sm) {
+   }
+   @include media-breakpoint-only(md) {
+   }
+   @include media-breakpoint-only(lg) {
+   }
+   @include media-breakpoint-only(xl) {
+   }
+}
+
 .text-brand {
    font-family: $font-family-brand;
 }
