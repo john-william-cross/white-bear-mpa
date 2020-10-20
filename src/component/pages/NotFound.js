@@ -7,7 +7,6 @@ export default function NotFound() {
       <>
          <Header />
          <Navigation />
-         <h1>hi</h1>
       </>
    );
 }

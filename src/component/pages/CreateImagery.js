@@ -3,6 +3,7 @@ import saveIcon from "../../icons/save.svg";
 import Header from "../ui/Header";
 import Navigation from "../ui/Navigation";
 import AppTemplate from "../ui/AppTemplate";
+import { Link } from "react-router-dom";
 
 export default function CreateImagery() {
    return (
@@ -42,9 +43,13 @@ export default function CreateImagery() {
          </p>
          {/* {        <!-- clearfix can fix issues with back-to-back floats --> */}
          <div className="clearfix"></div>
-         <button className="btn btn-link" id="back-to-answer-error">
+         <Link
+            to="create-answer"
+            className="btn btn-link"
+            id="back-to-answer-error"
+         >
             Back to answer
-         </button>
+         </Link>
          <button
             className="btn btn-primary btn-lg float-right"
             disabled

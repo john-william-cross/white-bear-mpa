@@ -24,8 +24,6 @@ function App() {
             <Route exact path="/all-cards" component={AllCards} />
             <Route exact path="/edit" component={Edit} />
             <Route component={NotFound} />
-            {/* is the above line supposed to be:   
-         <Route exact path="/not-found" component={NotFound} /> */}
          </Switch>
       </Router>
    );
