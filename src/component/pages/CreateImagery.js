@@ -14,12 +14,6 @@ export default function CreateImagery() {
          </p>
          <div className="card">
             <div className="card-body bg-primary lead">
-               {/* { <!-- in the line below, "d-md-none" means that at a 
-                 medium size screen, the 11 rows aren't displayed; once it 
-                 gets to medium size, it will stop displaying 11 rows -->
-
-              <!-- in the line below, "d-none d-md-block" means that it will
-                 not disply the 6 rows unless it is smaller than a medium screen -->} */}
                {/* <textarea
                         rows="11"
                         class="d-md-none"
