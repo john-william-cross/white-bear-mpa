@@ -4,6 +4,8 @@ import Navigation from "../ui/Navigation";
 import AppTemplate from "../ui/AppTemplate";
 import editIcon from "../../icons/edit.svg";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
+const memoryCard = memoryCards[2];
 
 export default function AllCards() {
    return (
@@ -43,12 +45,7 @@ export default function AllCards() {
             <div className="app-card">
                <div className="card">
                   <div className="card-body bg-primary">
-                     The European languages are members of the same family.
-                     Their separate existence is a myth. For science, music,
-                     sport, etc, Europe uses the same vocabulary. The languages
-                     only differ in their grammar, their pronunciation and their
-                     most common words. Everyone realizes why a new common
-                     language would b
+                     {memoryCard.imagery}
                   </div>
                </div>
 
