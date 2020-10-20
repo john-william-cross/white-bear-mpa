@@ -41,7 +41,6 @@ export default function Navigation() {
             </Link>
             <Link
                to="/review-imagery"
-               //    href="/review-imagery"
                className={`btn btn-secondary tab-separator ${tabActiveOnReview(
                   url
                )}`}
@@ -50,7 +49,6 @@ export default function Navigation() {
             </Link>
             <Link
                to="/all-cards"
-               //    href="/all-cards.html"
                className={`btn btn-secondary tab-separator ${tabActiveOnAllCards(
                   url
                )}`}

@@ -24,7 +24,6 @@ export default function ReviewImagery() {
          <div className="float-right">
             <Link
                to="review-answer"
-               //  onClick="location.href='review-imagery.html'"
                type="button"
                className="btn btn-outline-primary"
             >

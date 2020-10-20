@@ -3,6 +3,7 @@ import Header from "../ui/Header";
 import Navigation from "../ui/Navigation";
 import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icons/save.svg";
+import { Link } from "react-router-dom";
 
 export default function Edit() {
    return (
@@ -49,11 +50,11 @@ export default function Edit() {
             </div>
          </div>
          <div className="mt-n5">
-            <a href="/all-cards.html" className="btn btn-link mb-5">
+            <Link to="/all-cards" className="btn btn-link mb-5">
                Discard changes
-            </a>
-            <a
-               href="/all-cards.html"
+            </Link>
+            <Link
+               to="/all-cards"
                className="disabled btn btn-primary btn-lg float-right"
                id="save-card"
             >
@@ -68,7 +69,7 @@ export default function Edit() {
                   }}
                />
                Save
-            </a>
+            </Link>
          </div>
          <p className="text-center lead text-muted my-2 mb-4">
             Card properties
