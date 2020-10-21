@@ -1,17 +1,17 @@
 import React from "react";
-import editIcon from "../../icons/edit.svg";
 import { Link } from "react-router-dom";
+import editIcon from "../../icons/edit.svg";
 
 export default function MemoryCard() {
    return (
       <div className="d-flex align-items-start mb-5">
-         <div className="app-card">
+         <div className="app-card flex-fill">
             <div className="card">
-               <div className="card-body bg-primary">Hello</div>
+               <div className="card-body bg-primary">HELLO</div>
             </div>
 
             <div className="card">
-               <div className="card-body bg-secondary">World</div>
+               <div className="card-body bg-secondary">WORLD</div>
             </div>
          </div>
 
