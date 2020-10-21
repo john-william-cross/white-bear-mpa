@@ -1,14 +1,11 @@
 import React from "react";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
+
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
 
 export default function ReviewImagery() {
    return (
       <AppTemplate>
-         <Header />
-         <Navigation />
          <div className="mb-5"></div>
 
          <div className="card mb-5">

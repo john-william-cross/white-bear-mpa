@@ -1,12 +1,11 @@
 import React from "react";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
+import AppTemplate from "../ui/AppTemplate";
 
 export default function NotFound() {
    return (
       <>
-         <Header />
-         <Navigation />
+         <AppTemplate />
+         <p>Page Not Found</p>
       </>
    );
 }

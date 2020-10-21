@@ -1,19 +1,12 @@
 import React from "react";
 import thumbsUpIcon from "../../icons/thumbs-up.svg";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
+
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
 
 export default function ReviewAnswer() {
    return (
       <AppTemplate>
-         {/* in the line above, the  row has a width of 6; the offset of 3 puts 3 empty columns
-          on both sides of the content, effectively centering it//// mx-auto also works--> */}
-         <Header />
-         {/* <!-- <div className="clearfix"></div> this is one option to clear floats--> */}
-
-         <Navigation />
          <div className="mb-5"></div>
          <div className="card">
             <div className="card-body bg-primary lead">

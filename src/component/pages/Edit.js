@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
+
 import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icons/save.svg";
 import { Link } from "react-router-dom";
@@ -8,8 +7,6 @@ import { Link } from "react-router-dom";
 export default function Edit() {
    return (
       <AppTemplate>
-         <Header />
-         <Navigation />
          <p className="text-center lead text-muted my-2">Edit card</p>
          <div className="align-items-start mb-5">
             <div className="app-card">

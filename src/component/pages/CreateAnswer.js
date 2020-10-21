@@ -1,14 +1,11 @@
 import React from "react";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
+
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
 
 export default function CreateAnswer() {
    return (
       <AppTemplate>
-         <Header />
-         <Navigation />
          <p className="text-center lead text-muted my-2">Add an answer</p>
          <div className="card">
             <div className="card-body bg-primary lead" id="create-answer-input">
