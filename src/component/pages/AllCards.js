@@ -5,6 +5,7 @@ import AppTemplate from "../ui/AppTemplate";
 import editIcon from "../../icons/edit.svg";
 import { Link } from "react-router-dom";
 import memoryCards from "../../mock-data/memory-cards";
+import MemoryCard from "../ui/MemoryCard";
 const memoryCard = memoryCards[2];
 
 export default function AllCards() {
@@ -69,7 +70,7 @@ export default function AllCards() {
          </div>
 
          <div className="d-flex align-items-start mb-5">
-            <div className="app-card">
+            {/* <div className="app-card">
                <div className="card">
                   <div className="card-body bg-primary">
                      The European languages are members of the same family.
@@ -89,7 +90,7 @@ export default function AllCards() {
                      his head a little he could se
                   </div>
                </div>
-            </div>
+            </div> */}
 
             <Link to="/edit" className="btn btn-link ml-4 d-flex mt-n2">
                <img
