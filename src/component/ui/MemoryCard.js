@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import editIcon from "../../icons/edit.svg";
 
-export default function MemoryCard() {
+export default function MemoryCard(props) {
    return (
       <div className="d-flex align-items-start mb-5">
          <div className="app-card flex-fill">
             <div className="card">
-               <div className="card-body bg-primary">HELLO</div>
+               <div className="card-body bg-primary">{props.imagery}</div>
             </div>
 
             <div className="card">
-               <div className="card-body bg-secondary">WORLD</div>
+               <div className="card-body bg-secondary">{props.answer}</div>
             </div>
          </div>
 

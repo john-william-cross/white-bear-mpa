@@ -2,7 +2,6 @@ import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import memoryCards from "../../mock-data/memory-cards";
 import MemoryCard from "../ui/MemoryCard";
-const memoryCard = memoryCards[2];
 
 export default function AllCards() {
    return (
@@ -36,7 +35,15 @@ export default function AllCards() {
             </div>
          </div>
 
-         <MemoryCard />
+         {memoryCards.map((memoryCard) => {
+            return (
+               <MemoryCard
+                  answer={memoryCard.answer}
+                  imagery={memoryCard.imagery}
+                  key={memoryCard.id}
+               />
+            );
+         })}
       </AppTemplate>
    );
 }

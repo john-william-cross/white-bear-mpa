@@ -1,8 +1,9 @@
-import React from "react";
-
+import React, { memo } from "react";
 import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icons/save.svg";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
+const memoryCard = memoryCards[0];
 
 export default function Edit() {
    return (
@@ -14,11 +15,14 @@ export default function Edit() {
                   <div
                      className="card-body bg-primary"
                      id="edit-card-char-count-top-of-card"
+                     defaultValue={memoryCard.imagery}
+                     autoFocus
                   >
                      <textarea
                         rows="6"
                         id="edit-input-top-card"
                         autoFocus
+                        defaultValue={memoryCard.imagery}
                      ></textarea>
                   </div>
                </div>
@@ -31,6 +35,7 @@ export default function Edit() {
                      <textarea
                         rows="6"
                         id="edit-input-bottom-card"
+                        defaultValue={memoryCard.answer}
                         autoFocus
                      ></textarea>
                   </div>
@@ -76,7 +81,7 @@ export default function Edit() {
                <p className="text-muted">Created on:</p>
             </div>
             <div className="col-4">
-               <p>Dec. 12, 2019</p>
+               <p>{memoryCard.createdAt}</p>
             </div>
          </div>
          <div className="row mb-1">
@@ -84,7 +89,7 @@ export default function Edit() {
                <p className="text-muted">Last attempt:</p>
             </div>
             <div className="col-4">
-               <p>Dec. 12, 2019</p>
+               <p>{memoryCard.lastAttemptAt}</p>
             </div>
          </div>
          <div className="row mb-1">
@@ -92,7 +97,7 @@ export default function Edit() {
                <p className="text-muted">Next attempt:</p>
             </div>
             <div className="col-4">
-               <p>Dec. 12, 2019</p>
+               <p>{memoryCard.nextAttemptAt}</p>
             </div>
          </div>
          <div className="row mb-1">
@@ -100,7 +105,7 @@ export default function Edit() {
                <p className="text-muted">Consecutives:</p>
             </div>
             <div className="col-4">
-               <p>8</p>
+               <p>{memoryCard.totalSuccessfulAttempts}</p>
             </div>
          </div>
          <div className="custom-control custom-checkbox mt-4">
