@@ -2,6 +2,9 @@ import React from "react";
 
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
+
+const memoryCard = memoryCards[3];
 
 export default function ReviewImagery() {
    return (
@@ -10,10 +13,7 @@ export default function ReviewImagery() {
 
          <div className="card mb-5">
             <div className="card-body bg-primary lead">
-               Far far away, behind the word mountains, far from the countries
-               Vokalia and Consonantia, there live the blind texts. Separated
-               they live in Bookmarksgrove right at the coast of the Semantics,
-               a large.
+               {memoryCard.imagery}
             </div>
          </div>
 
