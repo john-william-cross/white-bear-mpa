@@ -34,7 +34,7 @@ export default function Landing() {
                                        Sign up
                                     </Link>
                                  </div>
-                                 <div className="email-and-create-password d-none">
+                                 <div className="email-and-create-password ">
                                     <h2 className="font-serif">
                                        Nice to meet you
                                     </h2>
