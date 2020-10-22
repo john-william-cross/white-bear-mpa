@@ -1,6 +1,5 @@
 import React from "react";
 import appLogo from "../../img/logo-landing.png";
-import { Link } from "react-router-dom";
 import SignUp from "../ui/SignUp";
 import LogIn from "../ui/LogIn";
 

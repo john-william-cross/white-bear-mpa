@@ -44,12 +44,13 @@ export default function SignUp() {
                      />
                      <p className="text-danger" id="sign-up-password-error"></p>
 
-                     <button
+                     <Link
+                        to="create-answer"
                         className="btn btn-block btn-success btn-lg mt-4"
                         id="lets-go-button"
                      >
                         Let's go!
-                     </button>
+                     </Link>
                   </div>
                </div>
             </div>
