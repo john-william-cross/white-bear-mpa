@@ -13,6 +13,7 @@ export default class SignUp extends React.Component {
          emailError: "",
          passwordError: "",
          hasEmailError: false,
+         hasPasswordError: false,
       };
    }
 
@@ -22,10 +23,7 @@ export default class SignUp extends React.Component {
       });
    }
 
-   validateAndCreateUser() {
-      console.log(`validate me`);
-      const emailInput = document.getElementById("signup-email-input").value;
-      console.log(emailInput);
+   setEmailState(emailInput) {
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
 
@@ -45,6 +43,24 @@ export default class SignUp extends React.Component {
       } else {
          this.setState({ emailError: "", hasEmailError: false });
       }
+   }
+
+   setPasswordState(passwordInput) {
+      console.log(passwordInput);
+      if (passwordInput === "") {
+         this.setState({
+            passwordError: "Please create a password.",
+            hasPasswordError: true,
+         });
+      }
+   }
+
+   validateAndCreateUser() {
+      const emailInput = document.getElementById("signup-email-input").value;
+      const passwordInput = document.getElementById("signup-password-input")
+         .value;
+      this.setEmailState(emailInput);
+      this.setPasswordState(passwordInput);
    }
 
    render() {
@@ -101,16 +117,20 @@ export default class SignUp extends React.Component {
                               <p className="lead text-muted">
                                  Create a password
                               </p>
-                              <p className="lead text-muted"></p>
+
                               <input
                                  id="signup-password-input"
-                                 className="form-control test"
+                                 className={classnames({
+                                    "form-control": true,
+                                    "is-invalid": this.state.hasPasswordError,
+                                 })}
                                  type="password"
                               />
-                              <p
-                                 className="text-danger"
-                                 id="sign-up-password-error"
-                              ></p>
+                              {this.state.hasPasswordError && (
+                                 <p className="text-danger">
+                                    {this.state.passwordError}
+                                 </p>
+                              )}
 
                               <button
                                  to="create-answer"
