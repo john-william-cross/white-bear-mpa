@@ -45,13 +45,42 @@ export default class SignUp extends React.Component {
       }
    }
 
-   setPasswordState(passwordInput) {
+   checkHasLocalPart(passwordInput, emailInput) {
+      const localPart = emailInput.split("@")[0];
+      if (localPart === "") return false;
+      else return passwordInput.includes(localPart);
+   }
+
+   setPasswordState(passwordInput, emailInput) {
       console.log(passwordInput);
+
+      const uniqChars = [...new Set(passwordInput)];
+      console.log(uniqChars);
+
       if (passwordInput === "") {
          this.setState({
             passwordError: "Please create a password.",
             hasPasswordError: true,
          });
+      } else if (passwordInput.length < 9) {
+         this.setState({
+            passwordError: "Your password must be at least 9 characters.",
+            hasPasswordError: true,
+         });
+      } else if (this.checkHasLocalPart(passwordInput, emailInput)) {
+         this.setState({
+            passwordError:
+               "For your safety, your password cannot contain your email address.",
+            hasPasswordError: true,
+         });
+      } else if (uniqChars.length < 3) {
+         this.setState({
+            passwordError:
+               "For your safety, your password must contain at least 3 unique characters.",
+            hasPasswordError: true,
+         });
+      } else {
+         this.setState({ passwordError: "", hasPasswordError: false });
       }
    }
 
@@ -60,7 +89,7 @@ export default class SignUp extends React.Component {
       const passwordInput = document.getElementById("signup-password-input")
          .value;
       this.setEmailState(emailInput);
-      this.setPasswordState(passwordInput);
+      this.setPasswordState(passwordInput, emailInput);
    }
 
    render() {
@@ -77,6 +106,7 @@ export default class SignUp extends React.Component {
 
                         {!this.state.isDisplayingInputs && (
                            <Link
+                              to=""
                               className="sign-up-prompt btn btn-block btn-success btn-sm mt-4"
                               onClick={() => {
                                  this.showInputs();
