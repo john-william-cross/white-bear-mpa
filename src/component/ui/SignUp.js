@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import hash from "object-hash";
+import { v4 as getUuid } from "uuid";
 
 //functions go in react classes
 export default class SignUp extends React.Component {
