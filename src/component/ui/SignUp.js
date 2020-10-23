@@ -48,6 +48,7 @@ export default class SignUp extends React.Component {
    checkHasLocalPart(passwordInput, emailInput) {
       const localPart = emailInput.split("@")[0];
       if (localPart === "") return false;
+      else if (localPart.length < 4) return false;
       else return passwordInput.includes(localPart);
    }
 
@@ -90,6 +91,12 @@ export default class SignUp extends React.Component {
          .value;
       this.setEmailState(emailInput);
       this.setPasswordState(passwordInput, emailInput);
+      if (
+         this.state.hasEmailError === false &&
+         this.state.hasPasswordError === false
+      ) {
+         console.log("VALID!!");
+      }
    }
 
    render() {
