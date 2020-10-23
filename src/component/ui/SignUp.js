@@ -24,7 +24,7 @@ export default class SignUp extends React.Component {
 
    validateAndCreateUser() {
       console.log(`validate me`);
-      const emailInput = document.getElementById("email-input").value;
+      const emailInput = document.getElementById("signup-email-input").value;
       console.log(emailInput);
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
@@ -81,7 +81,7 @@ export default class SignUp extends React.Component {
                               </p>
 
                               <input
-                                 id="email-input"
+                                 id="signup-email-input"
                                  className={classnames({
                                     "form-control": true,
                                     "mb-2": true,
@@ -103,7 +103,7 @@ export default class SignUp extends React.Component {
                               </p>
                               <p className="lead text-muted"></p>
                               <input
-                                 id="password-input"
+                                 id="signup-password-input"
                                  className="form-control test"
                                  type="password"
                               />

@@ -11,14 +11,14 @@ export default function LogIn() {
                <p className="lead text-muted mt-2">Email address</p>
                <input
                   className="form-control"
-                  id="return-user-email"
+                  id="login-email-input"
                   type="text"
                   placeholder=""
                />
                <p className="lead text-muted mt-2">Password</p>
                <input
                   className="form-control"
-                  id="return-user-password"
+                  id="login-password-input"
                   type="password"
                   placeholder=""
                />
