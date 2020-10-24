@@ -1,69 +1,105 @@
 import React from "react";
 import saveIcon from "../../icons/save.svg";
-
 import AppTemplate from "../ui/AppTemplate";
+import memoryCards from "../../mock-data/memory-cards";
 import { Link } from "react-router-dom";
+import classnames from "classnames";
+import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
-export default function CreateImagery() {
-   return (
-      <AppTemplate>
-         <p className="text-center lead text-muted my-2">
-            Add memorable imagery
-         </p>
-         <div className="card">
-            <div className="card-body bg-primary lead">
-               {/* <textarea
-                        rows="11"
-                        class="d-md-none"
-                        autoFocus={true}
-                     ></textarea> */}
-               <textarea
-                  rows="6"
-                  id="create-imagery-input"
-                  autoFocus={true}
-               ></textarea>
+const memoryCard = memoryCards[3];
+
+export default class CreateImagery extends React.Component {
+   constructor(props) {
+      super(props);
+      console.log(`in the edit component`);
+      this.state = {
+         answerText: memoryCard.answer,
+         imageryText: memoryCard.imagery,
+      };
+   }
+   checkHasInvalidCharCount() {
+      if (
+         this.state.imageryText.length > MAX_CARD_CHARS ||
+         this.state.imageryText.length === 0
+      ) {
+         return true;
+      } else return false;
+   }
+   setImageryText(e) {
+      this.setState({ imageryText: e.target.value });
+      console.log(e.target, e.target.value);
+   }
+
+   render() {
+      return (
+         <AppTemplate>
+            <p className="text-center lead text-muted my-2">
+               Add memorable imagery
+            </p>
+            <div className="card">
+               <div className="card-body bg-primary lead">
+                  {/* <textarea
+                           rows="11"
+                           class="d-md-none"
+                           autoFocus={true}
+                        ></textarea> */}
+                  <textarea
+                     rows="6"
+                     id="create-imagery-input"
+                     autoFocus={true}
+                     defaultValue={memoryCard.imagery}
+                     onChange={(e) => this.setImageryText(e)}
+                  ></textarea>
+               </div>
             </div>
-         </div>
-         <div className="card">
-            <div className="card-body bg-secondary lead">
-               One morning, when Gregor Samsa woke from troubled dreams, he
-               found himself transformed in his bed into a horrible vermin. He
-               lay on his armour-like back, and if he lifted his head a little
-               he could se
+            <div className="card">
+               <div className="card-body bg-secondary lead">
+                  One morning, when Gregor Samsa woke from troubled dreams, he
+                  found himself transformed in his bed into a horrible vermin.
+                  He lay on his armour-like back, and if he lifted his head a
+                  little he could se
+               </div>
             </div>
-         </div>
-         <p className="float-right mt-2 mb-5 text-muted">
-            <span className="text-danger" id="imagery-char-count">
-               0
-            </span>
-            /240
-         </p>
-         {/* {        <!-- clearfix can fix issues with back-to-back floats --> */}
-         <div className="clearfix"></div>
-         <Link
-            to="create-answer"
-            className="btn btn-link"
-            id="back-to-answer-error"
-         >
-            Back to answer
-         </Link>
-         <button
-            className="btn btn-primary btn-lg float-right"
-            disabled
-            id="save-card"
-         >
-            <img
-               src={saveIcon}
-               alt=""
-               width="20px"
-               style={{
-                  marginBottom: "3px",
-                  marginRight: "4px",
-                  marginLeft: "-5px",
-               }}
-            />
-            Save
-         </button>
-      </AppTemplate>
-   );
+            <p className="text-muted float-right mt-2 mb-5">
+               <span
+                  className={classnames({
+                     "text-danger": checkIsOver(
+                        this.state.imageryText,
+                        MAX_CARD_CHARS
+                     ),
+                  })}
+               >
+                  {this.state.imageryText.length}/{MAX_CARD_CHARS}
+               </span>
+            </p>{" "}
+            <div className="clearfix"></div>
+            <Link
+               to="create-answer"
+               className={classnames("btn btn-link", {
+                  disabled: this.checkHasInvalidCharCount(),
+               })}
+               id="back-to-answer-error"
+            >
+               Back to answer
+            </Link>
+            <button
+               className="btn btn-primary btn-lg float-right"
+               disabled
+               id="save-card"
+            >
+               <img
+                  src={saveIcon}
+                  alt=""
+                  width="20px"
+                  style={{
+                     marginBottom: "3px",
+                     marginRight: "4px",
+                     marginLeft: "-5px",
+                  }}
+               />
+               Save
+            </button>
+         </AppTemplate>
+      );
+   }
 }
