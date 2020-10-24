@@ -75,16 +75,16 @@ export default class CreateImagery extends React.Component {
             <div className="clearfix"></div>
             <Link
                to="create-answer"
-               className={classnames("btn btn-link", {
-                  disabled: this.checkHasInvalidCharCount(),
-               })}
+               className="btn btn-link"
                id="back-to-answer-error"
             >
                Back to answer
             </Link>
-            <button
-               className="btn btn-primary btn-lg float-right"
-               disabled
+            <Link
+               to="/all-cards"
+               className={classnames("btn btn-primary btn-lg float-right", {
+                  disabled: this.checkHasInvalidCharCount(),
+               })}
                id="save-card"
             >
                <img
@@ -98,7 +98,7 @@ export default class CreateImagery extends React.Component {
                   }}
                />
                Save
-            </button>
+            </Link>
          </AppTemplate>
       );
    }
