@@ -34,7 +34,7 @@ export default function Navigation() {
             aria-label="navigation"
          >
             <Link
-               to="/create-imagery"
+               to="/create-answer"
                className={`btn btn-secondary ${tabActiveOnCreate(url)}`}
             >
                Create new

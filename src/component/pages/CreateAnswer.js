@@ -1,42 +1,80 @@
 import React from "react";
-
+import saveIcon from "../../icons/save.svg";
 import AppTemplate from "../ui/AppTemplate";
+import memoryCards from "../../mock-data/memory-cards";
 import { Link } from "react-router-dom";
+import classnames from "classnames";
+import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
-export default function CreateAnswer() {
-   return (
-      <AppTemplate>
-         <p className="text-center lead text-muted my-2">Add an answer</p>
-         <div className="card">
-            <div className="card-body bg-primary lead" id="create-answer-input">
-               <textarea rows="11" className="d-md-none" autoFocus></textarea>
+const memoryCard = memoryCards[4];
 
-               {/* <!-- in the line below, "d-none d-md-block" means that it will
-                        not disply the 6 rows unless it is smaller than a medium screen --> */}
-               <textarea
-                  rows="6"
+export default class CreateAnswer extends React.Component {
+   constructor(props) {
+      super(props);
+      console.log(`in the edit component`);
+      this.state = {
+         answerText: memoryCard.answer,
+      };
+   }
+
+   checkHasInvalidCharCount() {
+      if (
+         this.state.answerText.length > MAX_CARD_CHARS ||
+         this.state.answerText.length === 0
+      ) {
+         return true;
+      } else return false;
+   }
+   setAnswerText(e) {
+      this.setState({ answerText: e.target.value });
+      console.log(e.target, e.target.value);
+   }
+
+   render() {
+      return (
+         <AppTemplate>
+            <p className="text-center lead text-muted my-2">Add an answer</p>
+            <div className="card">
+               <div
+                  className="card-body bg-primary lead"
                   id="create-answer-input"
-                  className="d-none d-md-block"
-                  autoFocus
-               ></textarea>
+               >
+                  <textarea
+                     rows="6"
+                     id="create-answer-input"
+                     autoFocus={true}
+                     defaultValue={""}
+                     onChange={(e) => this.setAnswerText(e)}
+                  ></textarea>
+               </div>
             </div>
-         </div>
 
-         <p className="float-right mt-2 mb-5 text-muted">
-            <span className="text-danger" id="create-answer-char-count">
-               0
-            </span>
-            /240
-         </p>
-         <div className="clearfix"></div>
+            <p className="float-right mt-2 mb-5 text-muted">
+               <span
+                  className={classnames({
+                     "text-danger": checkIsOver(
+                        this.state.answerText,
+                        MAX_CARD_CHARS
+                     ),
+                  })}
+                  id="create-answer-char-count"
+               >
+                  {this.state.answerText.length}/{MAX_CARD_CHARS}
+               </span>
+            </p>
+            <div className="clearfix"></div>
 
-         <Link
-            to="/create-imagery"
-            id="click-next"
-            className="disabled btn btn-lg btn-outline-primary float-right"
-         >
-            Next
-         </Link>
-      </AppTemplate>
-   );
+            <Link
+               to="/create-imagery"
+               id="click-next"
+               className={classnames(
+                  "btn btn-lg btn-outline-primary float-right",
+                  { disabled: this.checkHasInvalidCharCount() }
+               )}
+            >
+               Next
+            </Link>
+         </AppTemplate>
+      );
+   }
 }

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
-const memoryCard = memoryCards[3];
+const memoryCard = memoryCards[4];
 
 export default class CreateImagery extends React.Component {
    constructor(props) {
@@ -47,7 +47,7 @@ export default class CreateImagery extends React.Component {
                      rows="6"
                      id="create-imagery-input"
                      autoFocus={true}
-                     defaultValue={memoryCard.imagery}
+                     defaultValue={""} //should this be blank string or memoryCard.imagery??
                      onChange={(e) => this.setImageryText(e)}
                   ></textarea>
                </div>
