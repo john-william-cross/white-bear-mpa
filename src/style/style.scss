@@ -133,3 +133,8 @@ button {
 .sign-up {
    color: $blue;
 }
+
+.disabled {
+   pointer-events: fill !important;
+   cursor: not-allowed;
+}
