@@ -173,6 +173,12 @@ export default class Edit extends React.Component {
                   type="checkbox"
                   className="custom-control-input"
                   id="show-delete-button"
+                  checked={this.state.isShowingDeleteButton}
+                  name="isShowingDeleteButton"
+                  value={!this.state.isShowingDeleteButton}
+                  onChange={(e) => {
+                     this.updateState(e); //again, this refers to the whole component
+                  }}
                />
                <label
                   className="custom-control-label text-muted"
