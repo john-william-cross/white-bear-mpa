@@ -42,7 +42,8 @@ export default class LogIn extends React.Component {
       // is it ok to accept blank password here?
       // should this function be called validateAndCreateUser still?
       const emailInput = document.getElementById("signup-email-input").value;
-
+      const passwordInput = document.getElementById("signup-password-input")
+         .value;
       await this.setEmailState(emailInput);
 
       if (this.state.hasEmailError === false) {
@@ -50,6 +51,7 @@ export default class LogIn extends React.Component {
             id: getUuid(),
             email: emailInput,
             createdAt: Date.now(),
+            password: passwordInput,
          };
          console.log(user);
       }
