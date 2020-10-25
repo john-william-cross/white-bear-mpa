@@ -2,11 +2,14 @@ import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import memoryCards from "../../mock-data/memory-cards";
 import MemoryCard from "../ui/MemoryCard";
-
+import orderBy from "lodash/orderBy";
 export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+         order: '["createdAt"], ["desc"]',
+         memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+      };
    }
 
    /* 
@@ -48,17 +51,23 @@ orderBy(createdAt, ascending)
                </div>
                <div className="col-8">
                   <select className="form-control form-control-sm">
-                     <option>Most recent</option>
-                     <option>Oldest</option>
-                     <option>Hardest</option>
-                     <option>Easiest</option>
+                     <option value='["createdAt"], ["desc"]'>
+                        Most recent
+                     </option>
+                     <option value='["createdAt"], ["asc"]'>Oldest</option>
+                     <option value='["totalSuccessfulAttempts", "createdAt"], ["asc", "asc"]'>
+                        Hardest
+                     </option>
+                     <option value='["totalSuccessfulAttempts", "createdAt"], ["desc", "desc"]'>
+                        Easiest
+                     </option>
                      {/* <option>Hardest</option>
                   <option>Easiest</option> */}
                   </select>
                </div>
             </div>
 
-            {memoryCards.map((memoryCard) => {
+            {this.state.memoryCards.map((memoryCard) => {
                return (
                   <MemoryCard
                      answer={memoryCard.answer}
