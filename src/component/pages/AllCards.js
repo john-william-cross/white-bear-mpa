@@ -12,7 +12,16 @@ export default class AllCards extends React.Component {
       };
    }
 
-   filterByInput(e) {}
+   filterByInput() {
+      const input = document.getElementById("search-input").value;
+      const lowerCasedinput = input.toLowerCase();
+      console.log(lowerCasedinput);
+      const copyOfMemoryCards = [...this.state.memoryCards];
+      copyOfMemoryCards.filter((memoryCard) => {
+         if (memoryCard.imagery.includes(lowerCasedinput)) {
+         }
+      });
+   }
 
    setOrder(e) {
       const newOrder = e.target.value;
@@ -53,10 +62,14 @@ export default class AllCards extends React.Component {
                      className="form-control form-control-sm"
                      type="text"
                      placeholder="Search for a word"
+                     id="search-input"
                   />
                </div>
                <div className="col-4">
-                  <button className="btn btn-primary btn-block btn-sm">
+                  <button
+                     className="btn btn-primary btn-block btn-sm"
+                     onClick={() => this.filterByInput()}
+                  >
                      Search
                   </button>
                </div>
