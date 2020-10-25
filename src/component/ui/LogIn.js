@@ -45,7 +45,7 @@ export default class LogIn extends React.Component {
          .value;
       await this.setEmailState(emailInput);
 
-      if (this.state.hasEmailError === false) {
+      if (this.state.hasEmailError === false && passwordInput.length > 0) {
          const user = {
             id: getUuid(),
             email: emailInput,

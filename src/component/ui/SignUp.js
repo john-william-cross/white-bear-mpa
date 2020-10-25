@@ -92,17 +92,14 @@ export default class SignUp extends React.Component {
          .value;
       await this.setEmailState(emailInput);
       await this.setPasswordState(passwordInput, emailInput);
-      if (
-         this.state.hasEmailError === false &&
-         this.state.hasPasswordError === false
-      ) {
+      if (this.state.hasEmailError === false && passwordInput.length > 0) {
          const user = {
             id: getUuid(),
             email: emailInput,
             password: hash(passwordInput),
             createdAt: Date.now(),
          };
-         console.log(user);
+         console.log(`Here is the user: `, user);
       }
    }
 
