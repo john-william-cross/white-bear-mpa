@@ -7,16 +7,30 @@ export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         order: '[["createdAt"], ["desc"]]',
+         order: [["createdAt"], ["desc"]],
          memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
    }
 
    filterByInput(e) {}
 
-   setOrder(e) {}
+   setOrder(e) {
+      const newOrder = e.target.value;
+      console.log(newOrder);
+      this.setState({ order: newOrder }, () => {
+         this.setMemoryCards();
+      });
+   }
 
-   setMemoryCards() {}
+   setMemoryCards() {
+      console.log("setting memory cards");
+      const copyOfMemoryCards = [...this.state.memoryCards];
+      const toJson = JSON.parse(this.state.order);
+      console.log(...toJson);
+      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      console.log(orderedMemoryCards);
+      this.setState({ memoryCards: orderedMemoryCards });
+   }
 
    setMemoryCardsOrder(e) {
       console.log(`you've made a change!`); //41 minute mark is where things behave differently
@@ -56,7 +70,7 @@ export default class AllCards extends React.Component {
                   <select
                      value={this.state.order}
                      className="form-control form-control-sm"
-                     onChange={(e) => this.setMemoryCardsOrder(e)}
+                     onChange={(e) => this.setOrder(e)}
                   >
                      <option value='[["createdAt"], ["desc"]]'>
                         Most recent
