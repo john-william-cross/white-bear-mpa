@@ -35,6 +35,7 @@ orderBy(createdAt, ascending)
       const toJson = JSON.parse(newOrder);
       console.log(...toJson);
       const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      console.log(orderedMemoryCards);
       this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
    }
 
