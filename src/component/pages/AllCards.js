@@ -12,20 +12,11 @@ export default class AllCards extends React.Component {
       };
    }
 
-   /* 
+   filterByInput(e) {}
 
-EASY: 
-orderBy([totalSuccessfulAttempts, createdAt], [descending, descending])
+   setOrder(e) {}
 
-HARD: 
-orderBy([totalSuccessfulAttempts, createdAt], [ascending, ascending])
-
-MOST RECENT
-orderBy(createdAt, descending)
-
-OLDEST
-orderBy(createdAt, ascending)
-*/
+   setMemoryCards() {}
 
    setMemoryCardsOrder(e) {
       console.log(`you've made a change!`); //41 minute mark is where things behave differently
