@@ -36,6 +36,18 @@ export default class LogIn extends React.Component {
          this.setState({ emailError: "", hasEmailError: false });
       }
    }
+   async setPasswordState(passwordInput) {
+      console.log(passwordInput);
+
+      if (passwordInput === "") {
+         this.setState({
+            passwordError: "Please enter your password.",
+            hasPasswordError: true,
+         });
+      } else {
+         this.setState({ passwordError: "", hasPasswordError: false });
+      }
+   }
 
    async validateUser() {
       // is it ok to accept blank password here?
@@ -44,7 +56,7 @@ export default class LogIn extends React.Component {
       const passwordInput = document.getElementById("signup-password-input")
          .value;
       await this.setEmailState(emailInput);
-
+      await this.setPasswordState(passwordInput, emailInput);
       if (this.state.hasEmailError === false && passwordInput.length > 0) {
          const user = {
             id: getUuid(),
@@ -90,6 +102,9 @@ export default class LogIn extends React.Component {
                      })}
                      type="password"
                   />
+                  {this.state.hasPasswordError && (
+                     <p className="text-danger">{this.state.passwordError}</p>
+                  )}
                   <button
                      to="create-answer"
                      className="float-right btn btn-success btn-sm mt-2"

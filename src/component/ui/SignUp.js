@@ -163,6 +163,9 @@ export default class SignUp extends React.Component {
                                  id="signup-password-input"
                                  className={classnames({
                                     "form-control": true,
+                                    "text-muted": true,
+                                    "mt-2": true,
+                                    lead: true,
                                     "is-invalid": this.state.hasPasswordError,
                                  })}
                                  type="password"
