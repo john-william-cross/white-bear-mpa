@@ -1,5 +1,4 @@
 import React from "react";
-import saveIcon from "../../icons/save.svg";
 import AppTemplate from "../ui/AppTemplate";
 import memoryCards from "../../mock-data/memory-cards";
 import { Link } from "react-router-dom";

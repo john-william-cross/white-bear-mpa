@@ -17,18 +17,12 @@ export default class AllCards extends React.Component {
       const lowerCasedInput = input.toLowerCase();
       console.log(lowerCasedInput);
       const copyOfMemoryCards = [...this.state.memoryCards];
-      const filteredMemoryCards = copyOfMemoryCards.filter((memoryCard) => {
+      copyOfMemoryCards.filter((memoryCard) => {
          const lowerCasedImagery = memoryCard.imagery.toLowerCase();
-         const lowerCasedAnswer = memoryCard.answer.toLowerCase();
-         if (
-            lowerCasedImagery.includes(lowerCasedInput) ||
-            lowerCasedAnswer.includes(lowerCasedInput)
-         ) {
-            return true;
-         } else return false;
-      });
-      this.setState({ memoryCards: filteredMemoryCards }, () => {
-         this.setMemoryCards();
+         if (memoryCard.imagery.includes(lowerCasedInput)) {
+            console.log(`we have a match!`);
+         }
+         return true;
       });
    }
 
@@ -50,17 +44,17 @@ export default class AllCards extends React.Component {
       this.setState({ memoryCards: orderedMemoryCards });
    }
 
-   // setMemoryCardsOrder(e) {
-   //    console.log(`you've made a change!`); //41 minute mark is where things behave differently
-   //    const newOrder = e.target.value;
-   //    console.log(newOrder);
-   //    const copyOfMemoryCards = [...this.state.memoryCards];
-   //    const toJson = JSON.parse(newOrder);
-   //    console.log(...toJson);
-   //    const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
-   //    console.log(orderedMemoryCards);
-   //    this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
-   // }
+   setMemoryCardsOrder(e) {
+      console.log(`you've made a change!`); //41 minute mark is where things behave differently
+      const newOrder = e.target.value;
+      console.log(newOrder);
+      const copyOfMemoryCards = [...this.state.memoryCards];
+      const toJson = JSON.parse(newOrder);
+      console.log(...toJson);
+      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      console.log(orderedMemoryCards);
+      this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
+   }
 
    render() {
       return (
