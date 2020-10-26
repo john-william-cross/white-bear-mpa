@@ -14,7 +14,7 @@ export default class CreateImagery extends React.Component {
       console.log(`in the edit component`);
       this.state = {
          answerText: memoryCard.answer,
-         imageryText: memoryCard.imagery,
+         imageryText: "",
       };
    }
    checkHasInvalidCharCount() {

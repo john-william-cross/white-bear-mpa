@@ -1,18 +1,15 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
-import memoryCards from "../../mock-data/memory-cards";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
-
-const memoryCard = memoryCards[3];
 
 export default class CreateAnswer extends React.Component {
    constructor(props) {
       super(props);
       console.log(`in the edit component`);
       this.state = {
-         answerText: memoryCard.answer,
+         answerText: "",
       };
    }
 
