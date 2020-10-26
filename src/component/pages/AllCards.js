@@ -25,6 +25,7 @@ export default class AllCards extends React.Component {
             lowerCasedImagery.includes(lowerCasedInput) ||
             lowerCasedAnswer.includes(lowerCasedInput)
          ) {
+            console.log(`match`);
             return true;
          } else return false;
       });
