@@ -205,17 +205,18 @@ export default class Edit extends React.Component {
                   name="isShowingDeleteButton"
                   value={!this.state.isShowingDeleteButton}
                   onChange={(e) => {
-                     this.updateState(e); //again, this refers to the whole component
+                     this.updateState(e);
+                     //again, this refers to the whole component
                   }}
                />
                <label
-                  className="custom-control-label"
+                  className="custom-control-label mb-2 text-muted"
                   htmlFor="isShowingDeleteButton"
                >
                   Show delete button
                </label>
             </div>
-
+            <div className="clearfix"></div>
             <div className="mb-4">
                {this.state.isShowingDeleteButton && (
                   <button
