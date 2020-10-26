@@ -16,7 +16,12 @@ export default class Edit extends React.Component {
       this.state = {
          answerText: memoryCard.answer,
          imageryText: memoryCard.imagery,
+         isShowingDeleteButton: false,
       };
+   }
+
+   showDeleteButton() {
+      this.setState({ isShowingDeleteButton: true });
    }
 
    checkHasInvalidCharCount() {
@@ -168,17 +173,16 @@ export default class Edit extends React.Component {
                   <p>{memoryCard.totalSuccessfulAttempts}</p>
                </div>
             </div>
-            <div className="custom-control custom-checkbox mt-4">
+            <div
+               className="custom-control custom-checkbox mt-4 mb-2"
+               onClick={() => {
+                  this.showDeleteButton();
+               }}
+            >
                <input
                   type="checkbox"
                   className="custom-control-input"
                   id="show-delete-button"
-                  checked={this.state.isShowingDeleteButton}
-                  name="isShowingDeleteButton"
-                  value={!this.state.isShowingDeleteButton}
-                  onChange={(e) => {
-                     this.updateState(e); //again, this refers to the whole component
-                  }}
                />
                <label
                   className="custom-control-label text-muted"
@@ -187,12 +191,17 @@ export default class Edit extends React.Component {
                   Show delete button
                </label>
             </div>
-            <button
-               className="btn btn-lg btn-outline-danger mt-3 d-none"
-               id="delete-this-card"
-            >
-               Delete this card
-            </button>
+            <div className="mb-4">
+               {this.state.isShowingDeleteButton && (
+                  <button
+                     type="button"
+                     className="btn btn-outline-danger"
+                     id="delete-button"
+                  >
+                     Delete this card
+                  </button>
+               )}
+            </div>
          </AppTemplate>
       );
    }
