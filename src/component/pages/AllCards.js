@@ -8,7 +8,8 @@ export default class AllCards extends React.Component {
       super(props);
       this.state = {
          order: [["createdAt"], ["desc"]],
-         memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+         displayedMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+         allMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
    }
 
@@ -16,8 +17,8 @@ export default class AllCards extends React.Component {
       const input = document.getElementById("search-input").value;
       const lowerCasedInput = input.toLowerCase();
       console.log(lowerCasedInput);
-      const copyOfMemoryCards = [...this.state.memoryCards];
-      const filteredMemoryCards = copyOfMemoryCards.filter((memoryCard) => {
+      const copyOfAllMemoryCards = [...this.state.allMemoryCards];
+      const filteredMemoryCards = copyOfAllMemoryCards.filter((memoryCard) => {
          const lowerCasedImagery = memoryCard.imagery.toLowerCase();
          const lowerCasedAnswer = memoryCard.answer.toLowerCase();
          if (
@@ -27,11 +28,12 @@ export default class AllCards extends React.Component {
             return true;
          } else return false;
       });
-      this.setState({ memoryCards: filteredMemoryCards }, () => {
+      this.setState({ displayedMemoryCards: filteredMemoryCards }, () => {
          this.setMemoryCards();
       });
    }
 
+   // comment
    setOrder(e) {
       const newOrder = e.target.value;
       console.log(newOrder);
@@ -42,12 +44,12 @@ export default class AllCards extends React.Component {
 
    setMemoryCards() {
       console.log("setting memory cards");
-      const copyOfMemoryCards = [...this.state.memoryCards];
+      const copyOfDisplayedMemoryCards = [...this.state.displayedMemoryCards];
       const toJson = JSON.parse(this.state.order);
       console.log(...toJson);
-      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      const orderedMemoryCards = orderBy(copyOfDisplayedMemoryCards, ...toJson);
       console.log(orderedMemoryCards);
-      this.setState({ memoryCards: orderedMemoryCards });
+      this.setState({ displayedMemoryCards: orderedMemoryCards });
    }
 
    // setMemoryCardsOrder(e) {
@@ -104,13 +106,11 @@ export default class AllCards extends React.Component {
                      <option value='[["totalSuccessfulAttempts", "createdAt"], ["desc", "desc"]]'>
                         Easiest
                      </option>
-                     {/* <option>Hardest</option>
-                  <option>Easiest</option> */}
                   </select>
                </div>
             </div>
 
-            {this.state.memoryCards.map((memoryCard) => {
+            {this.state.displayedMemoryCards.map((memoryCard) => {
                return (
                   <MemoryCard
                      answer={memoryCard.answer}
