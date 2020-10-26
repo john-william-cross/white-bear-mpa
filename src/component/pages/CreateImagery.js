@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
-const memoryCard = memoryCards[4];
+const memoryCard = memoryCards[3];
 
 export default class CreateImagery extends React.Component {
    constructor(props) {
@@ -27,6 +27,7 @@ export default class CreateImagery extends React.Component {
    }
    setImageryText(e) {
       this.setState({ imageryText: e.target.value });
+
       console.log(e.target, e.target.value);
    }
 
@@ -38,11 +39,6 @@ export default class CreateImagery extends React.Component {
             </p>
             <div className="card">
                <div className="card-body bg-primary lead">
-                  {/* <textarea
-                           rows="11"
-                           class="d-md-none"
-                           autoFocus={true}
-                        ></textarea> */}
                   <textarea
                      rows="6"
                      id="create-imagery-input"
@@ -69,6 +65,7 @@ export default class CreateImagery extends React.Component {
                      ),
                   })}
                >
+                  {console.log(this.state.imageryText.length)}
                   {this.state.imageryText.length}/{MAX_CARD_CHARS}
                </span>
             </p>{" "}

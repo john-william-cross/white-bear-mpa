@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
-const memoryCard = memoryCards[4];
+const memoryCard = memoryCards[3];
 
 export default class CreateAnswer extends React.Component {
    constructor(props) {
