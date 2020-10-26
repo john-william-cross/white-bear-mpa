@@ -17,16 +17,15 @@ export default class AllCards extends React.Component {
       const lowerCasedInput = input.toLowerCase();
       console.log(lowerCasedInput);
       const copyOfMemoryCards = [...this.state.memoryCards];
-      copyOfMemoryCards.filter((memoryCard) => {
+      const filteredMemoryCards = copyOfMemoryCards.filter((memoryCard) => {
          const lowerCasedImagery = memoryCard.imagery.toLowerCase();
          const lowerCasedAnswer = memoryCard.answer.toLowerCase();
          if (
             lowerCasedImagery.includes(lowerCasedInput) ||
             lowerCasedAnswer.includes(lowerCasedInput)
          ) {
-            console.log(`we have a match!`);
+            return true;
          }
-         return true;
       });
    }
 
