@@ -6,6 +6,7 @@ import memoryCards from "../../mock-data/memory-cards";
 import toDisplayDate from "date-fns/format";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
+import { safelyParseJson } from "../../utils/helpers";
 
 const memoryCard = memoryCards[3];
 
@@ -23,8 +24,9 @@ export default class Edit extends React.Component {
    updateState(e) {
       let value = e.target.value;
       if (value === "true" || value === "false") {
-         this.setState({ [e.target.name]: value });
+         value = safelyParseJson(value);
       }
+      this.setState({ [e.target.name]: value });
    }
 
    checkHasInvalidCharCount() {
