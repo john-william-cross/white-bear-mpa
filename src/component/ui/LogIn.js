@@ -1,8 +1,10 @@
 import React from "react";
 import classnames from "classnames";
 import { v4 as getUuid } from "uuid";
+import { withRouter } from "react-router-dom";
+import hash from "object-hash";
 
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
    //we can set the state in constructor
    constructor(props) {
       super(props);
@@ -12,6 +14,7 @@ export default class LogIn extends React.Component {
          emailError: "",
          passwordError: "",
          hasEmailError: false,
+         hasPasswordError: false,
       };
    }
 
@@ -62,9 +65,11 @@ export default class LogIn extends React.Component {
             id: getUuid(),
             email: emailInput,
             createdAt: Date.now(),
-            password: passwordInput,
+            password: hash(passwordInput),
          };
          console.log(user);
+         //redirect the user
+         this.props.history.push("/create-answer");
       }
    }
 
@@ -121,3 +126,5 @@ export default class LogIn extends React.Component {
       );
    }
 }
+
+export default withRouter(LogIn);
