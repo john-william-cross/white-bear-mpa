@@ -7,7 +7,7 @@ export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         order: [["createdAt"], ["desc"]],
+         order: '[["createdAt"], ["desc"]]',
          displayedMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
          allMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
@@ -46,8 +46,10 @@ export default class AllCards extends React.Component {
    setMemoryCards() {
       console.log("setting memory cards");
       const copyOfDisplayedMemoryCards = [...this.state.displayedMemoryCards];
+      // turn this string into an array
       const toJson = JSON.parse(this.state.order);
       console.log(...toJson);
+      // use spread syntax to spread the contents of the array into the order by function
       const orderedMemoryCards = orderBy(copyOfDisplayedMemoryCards, ...toJson);
       console.log(orderedMemoryCards);
       this.setState({ displayedMemoryCards: orderedMemoryCards });
@@ -97,6 +99,7 @@ export default class AllCards extends React.Component {
                      className="form-control form-control-sm"
                      onChange={(e) => this.setOrder(e)}
                   >
+                     {/* option values can ONLY be strings */}
                      <option value='[["createdAt"], ["desc"]]'>
                         Most recent
                      </option>
