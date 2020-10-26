@@ -20,8 +20,11 @@ export default class Edit extends React.Component {
       };
    }
 
-   showDeleteButton() {
-      this.setState({ isShowingDeleteButton: true });
+   updateState(e) {
+      let value = e.target.value;
+      if (value === "true" || value === "false") {
+         this.setState({ [e.target.name]: value });
+      }
    }
 
    checkHasInvalidCharCount() {
@@ -173,7 +176,7 @@ export default class Edit extends React.Component {
                   <p>{memoryCard.totalSuccessfulAttempts}</p>
                </div>
             </div>
-            <div
+            {/* <div
                className="custom-control custom-checkbox mt-4 mb-2"
                onClick={() => {
                   this.showDeleteButton();
@@ -190,7 +193,29 @@ export default class Edit extends React.Component {
                >
                   Show delete button
                </label>
+            </div> */}
+
+            <div className="custom-control custom-checkbox custom-control-inline float-left mr-0 mt-2">
+               <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="isShowingDeleteButton"
+                  checked={this.state.isShowingDeleteButton} //we are accessing the whole class of Home, then accessing the state of it,
+                  //then accessing the isAdvanced property from the state object
+                  name="isShowingDeleteButton"
+                  value={!this.state.isShowingDeleteButton}
+                  onChange={(e) => {
+                     this.updateState(e); //again, this refers to the whole component
+                  }}
+               />
+               <label
+                  className="custom-control-label"
+                  htmlFor="isShowingDeleteButton"
+               >
+                  Show delete button
+               </label>
             </div>
+
             <div className="mb-4">
                {this.state.isShowingDeleteButton && (
                   <button
