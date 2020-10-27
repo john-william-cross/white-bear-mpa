@@ -29,7 +29,7 @@ export default function ReviewAnswer() {
             <Link to="/review-empty" className="btn btn-outline-primary">
                Needs work
             </Link>
-            <Link to="/review-empty" className="btn btn-primary ml-4">
+            <Link to="/review-imagery" className="btn btn-primary ml-4">
                <img
                   src={thumbsUpIcon}
                   width="20px"
