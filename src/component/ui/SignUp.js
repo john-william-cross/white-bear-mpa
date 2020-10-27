@@ -4,6 +4,7 @@ import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import { withRouter } from "react-router-dom";
+import { EMAIL_REGEX } from "../../utils/helpers";
 
 //functions go in react classes
 class SignUp extends React.Component {
@@ -29,14 +30,12 @@ class SignUp extends React.Component {
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
 
-      // eslint-disable-next-line
-      const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailInput === "")
          this.setState({
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (emailRegex.test(lowerCasedEmailInput) === false) {
+      else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
          console.log("not a valid email");
          this.setState({
             emailError: "Please enter a valid email address.",
@@ -93,7 +92,10 @@ class SignUp extends React.Component {
          .value;
       await this.setEmailState(emailInput);
       await this.setPasswordState(passwordInput, emailInput);
-      if (this.state.hasEmailError === false && passwordInput.length > 0) {
+      if (
+         this.state.hasEmailError === false &&
+         this.state.hasPasswordError === false
+      ) {
          const user = {
             id: getUuid(),
             email: emailInput,
