@@ -178,24 +178,6 @@ export default class Edit extends React.Component {
                   <p>{memoryCard.totalSuccessfulAttempts}</p>
                </div>
             </div>
-            {/* <div
-               className="custom-control custom-checkbox mt-4 mb-2"
-               onClick={() => {
-                  this.showDeleteButton();
-               }}
-            >
-               <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="show-delete-button"
-               />
-               <label
-                  className="custom-control-label text-muted"
-                  htmlFor="show-delete-button"
-               >
-                  Show delete button
-               </label>
-            </div> */}
 
             <div className="custom-control custom-checkbox custom-control-inline float-left mr-0 mt-2">
                <input
