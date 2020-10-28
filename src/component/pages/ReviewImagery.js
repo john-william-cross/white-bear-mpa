@@ -1,24 +1,26 @@
 import React from "react";
-
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
-import memoryCards from "../../mock-data/memory-cards";
 import axios from "axios";
+import { connect } from "react-redux";
+import actions from "../../store/actions";
 
 //comment for commit
 
-const memoryCard = memoryCards[3];
-
-export default class ReviewImagery extends React.Component {
+class ReviewImagery extends React.Component {
    constructor(props) {
       super(props);
       axios
          .get(
             "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
          )
-         .then(function (response) {
+         .then(function (res) {
             // handle success
-            console.log(response);
+            console.log(res);
+            props.dispatch({
+               type: actions.STORE_QUEUED_CARDS,
+               payload: res.data,
+            });
          })
          .catch(function (error) {
             // handle error
@@ -29,18 +31,20 @@ export default class ReviewImagery extends React.Component {
 
    queuedCards: [],
    indexOfCurrentCard: 0,
-   user: {}
+   currentUser: {}
 
 */
 
    render() {
+      const memoryCard = this.props.queuedCards[this.props.indexOfCurrentCard];
       return (
          <AppTemplate>
             <div className="mb-5"></div>
 
             <div className="card mb-5">
                <div className="card-body bg-primary lead">
-                  {memoryCard.imagery}
+                  {memoryCard && memoryCard.imagery}
+                  {/* if this evaluates to true, do the second thing. if false, done. */}
                </div>
             </div>
 
@@ -60,3 +64,13 @@ export default class ReviewImagery extends React.Component {
       );
    }
 }
+
+function mapStateToProps(state) {
+   //Everything down here is global state
+   return {
+      queuedCards: state.queuedCards,
+      indexOfCurrentCard: state.indexOfCurrentCard,
+   };
+}
+
+export default connect(mapStateToProps)(ReviewImagery);

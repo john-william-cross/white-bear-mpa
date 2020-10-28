@@ -2,41 +2,48 @@ import React from "react";
 import thumbsUpIcon from "../../icons/thumbs-up.svg";
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
-import memoryCards from "../../mock-data/memory-cards";
-import axios from "axios";
+// import axios from "axios";
+import { connect } from "react-redux";
+import actions from "../../store/actions";
 
-const memoryCard = memoryCards[3];
+class ReviewAnswer extends React.Component {
+   // constructor(props) {
+   //    super(props);
+   //    axios
+   //       .get(
+   //          "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
+   //       )
+   //       .then(function (response) {
+   //          // handle success
+   //          console.log(response);
+   //       })
+   //       .catch(function (error) {
+   //          // handle error
+   //          console.log(error);
+   //       });
+   // }
 
-export default class ReviewAnswer extends React.Component {
-   constructor(props) {
-      super(props);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
-         )
-         .then(function (response) {
-            // handle success
-            console.log(response);
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
+   goToNextCard() {
+      // TODO: if index of current card = length of the array of all cards // if we've gone to the end of the array, then show Out Of Cards component
+      this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
+      this.props.history.push("/review-imagery");
    }
 
    render() {
+      const memoryCard = this.props.queuedCards[this.props.indexOfCurrentCard];
+
       return (
          <AppTemplate>
             <div className="mb-5"></div>
             <div className="card">
                <div className="card-body bg-primary lead">
-                  {memoryCard.imagery}
+                  {memoryCard && memoryCard.imagery}
                </div>
             </div>
 
             <div className="card mb-5">
                <div className="card-body bg-secondary lead">
-                  {memoryCard.answer}
+                  {memoryCard && memoryCard.answer}
                </div>
             </div>
 
@@ -44,10 +51,20 @@ export default class ReviewAnswer extends React.Component {
                Edit
             </Link>
             <div className="float-right">
-               <Link to="/review-empty" className="btn btn-outline-primary">
+               <button
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                     this.goToNextCard();
+                  }}
+               >
                   Needs work
-               </Link>
-               <Link to="/review-imagery" className="btn btn-primary ml-4">
+               </button>
+               <button
+                  className="btn btn-primary ml-4"
+                  onClick={() => {
+                     this.goToNextCard();
+                  }}
+               >
                   <img
                      src={thumbsUpIcon}
                      width="20px"
@@ -55,9 +72,19 @@ export default class ReviewAnswer extends React.Component {
                      alt=""
                   />
                   Got it
-               </Link>
+               </button>
             </div>
          </AppTemplate>
       );
    }
 }
+
+function mapStateToProps(state) {
+   //Everything down here is global state
+   return {
+      queuedCards: state.queuedCards,
+      indexOfCurrentCard: state.indexOfCurrentCard,
+   };
+}
+
+export default connect(mapStateToProps)(ReviewAnswer);
