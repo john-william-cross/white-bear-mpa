@@ -7,22 +7,6 @@ import { connect } from "react-redux";
 import actions from "../../store/actions";
 
 class ReviewAnswer extends React.Component {
-   // constructor(props) {
-   //    super(props);
-   //    axios
-   //       .get(
-   //          "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
-   //       )
-   //       .then(function (response) {
-   //          // handle success
-   //          console.log(response);
-   //       })
-   //       .catch(function (error) {
-   //          // handle error
-   //          console.log(error);
-   //       });
-   // }
-
    goToNextCard() {
       // TODO: if index of current card = length of the array of all cards // if we've gone to the end of the array, then show Out Of Cards component
       this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
