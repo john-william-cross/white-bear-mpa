@@ -25,6 +25,13 @@ export default class ReviewImagery extends React.Component {
             console.log(error);
          });
    }
+   /* 
+
+   queuedCards: [],
+   indexOfCurrentCard: 0,
+   user: {}
+
+*/
 
    render() {
       return (
