@@ -11,7 +11,9 @@ export default class ReviewImagery extends React.Component {
    constructor(props) {
       super(props);
       axios
-         .get("https://run.mocky.io/v3/50e1b224-e38f-4e5e-9a83-8764c4b9d77a")
+         .get(
+            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
+         )
          .then(function (response) {
             // handle success
             console.log(response);
