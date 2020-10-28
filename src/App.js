@@ -10,6 +10,7 @@ import ReviewEmpty from "./component/pages/ReviewEmpty";
 import AllCards from "./component/pages/AllCards";
 import Edit from "./component/pages/Edit";
 import NotFound from "./component/pages/NotFound";
+import ReduxPractice from "./component/REDUX PRACTICE/ReduxPractice";
 
 function App() {
    return (
@@ -23,6 +24,8 @@ function App() {
             <Route exact path="/review-empty" component={ReviewEmpty} />
             <Route exact path="/all-cards" component={AllCards} />
             <Route exact path="/edit" component={Edit} />
+            <Route exact path="/redux-practice" component={ReduxPractice} />
+
             <Route component={NotFound} />
          </Switch>
       </Router>
