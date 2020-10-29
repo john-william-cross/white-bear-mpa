@@ -1,11 +1,12 @@
 import actions from "../actions";
 
-export default function currentUser(state = {}, action) {
+export default function currentUser(currentUser = {}, action) {
    //every action has an action.type and action.payload
+   //let newCurrentUser = { ...currentUser };
    switch (action.type) {
       case actions.STORE_CURRENT_USER:
-         return {};
+         return action.payload;
       default:
-         return state;
+         return currentUser;
    }
 }

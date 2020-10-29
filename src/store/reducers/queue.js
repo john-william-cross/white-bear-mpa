@@ -1,15 +1,16 @@
 import actions from "../actions";
 
-export default function queue(queue = [], action) {
+export default function queue(queue = {}, action) {
    //action has two things associate with it: action.payload, action.type
+   let newQueue = { ...queue };
+
    switch (action.type) {
       case actions.STORE_QUEUED_CARDS:
-         console.log("FIRED STORED QUEUED CARDS");
-         queue.cards = action.payload;
-         return queue; //what's the action payload in ReviewImagery.js? res.data, which is our array of data
+         newQueue.cards = action.payload;
+         return newQueue; //what's the action payload in ReviewImagery.js? res.data, which is our array of data
       case actions.UPDATE_INDEX_OF_CURRENT_CARD:
-         queue.index = queue.index + 1;
-         return queue;
+         newQueue.index += 1;
+         return newQueue;
       default:
          return queue;
    }
