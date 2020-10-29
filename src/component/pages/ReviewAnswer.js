@@ -8,9 +8,13 @@ import actions from "../../store/actions";
 
 class ReviewAnswer extends React.Component {
    goToNextCard() {
-      // TODO: if index of current card = length of the array of all cards // if we've gone to the end of the array, then show Out Of Cards component
-      this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
-      this.props.history.push("/review-imagery");
+      if (this.props.queue.index === this.props.queue.cards.length - 1) {
+         this.props.dispatch({ type: actions.RESET_QUEUE });
+         this.props.history.push("/review-empty");
+      } else {
+         this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
+         this.props.history.push("/review-imagery");
+      }
    }
 
    render() {

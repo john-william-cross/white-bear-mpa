@@ -10,34 +10,29 @@ import actions from "../../store/actions";
 class ReviewImagery extends React.Component {
    constructor(props) {
       super(props);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
-         )
-         .then(function (res) {
-            // handle success
-            console.log(res);
-            props.dispatch({
-               type: actions.STORE_QUEUED_CARDS,
-               payload: res.data,
+      if (props.queue.cards.length === 0) {
+         console.log("Empty array of queue cards");
+         axios
+            .get(
+               "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
+            )
+            .then(function (res) {
+               // handle success
+               console.log(res);
+               props.dispatch({
+                  type: actions.STORE_QUEUED_CARDS,
+                  payload: res.data,
+               });
+            })
+            .catch(function (error) {
+               // handle error
+               console.log(error);
             });
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
+      }
    }
-   /* 
-
-   queuedCards: [],
-   indexOfCurrentCard: 0,
-   currentUser: {}
-
-*/
 
    render() {
       const memoryCard = this.props.queue.cards[this.props.queue.index];
-      console.log({ memoryCard });
       return (
          <AppTemplate>
             <div className="mb-5"></div>
