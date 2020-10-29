@@ -68,7 +68,7 @@ class ReviewImagery extends React.Component {
 function mapStateToProps(state) {
    //Everything down here is global state
    return {
-      queuedCards: state.queuedCards,
+      queuedCards: state.queue,
       indexOfCurrentCard: state.indexOfCurrentCard,
    };
 }
