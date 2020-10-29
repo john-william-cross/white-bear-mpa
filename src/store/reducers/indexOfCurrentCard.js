@@ -9,3 +9,17 @@ export default function indexOfCurrentCard(state = 0, action) {
          return state;
    }
 }
+
+/*
+
+
+currentUser: {
+
+}
+
+queue: {
+   cards: [],
+   index: 0;
+}
+
+*/
