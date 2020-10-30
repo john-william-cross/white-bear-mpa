@@ -1,6 +1,5 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
-import memoryCards from "../../mock-data/memory-cards";
 import MemoryCard from "../ui/MemoryCard";
 import orderBy from "lodash/orderBy";
 import axios from "axios";
@@ -8,23 +7,38 @@ import axios from "axios";
 export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
+
+      this.state = {
+         order: '[["createdAt"], ["desc"]]',
+         displayedMemoryCards: [],
+         allMemoryCards: [],
+      };
+   }
+
+   //componentDidMount is a lifecycle method like render, you don't have to call it; react uses it automatically
+   componentDidMount() {
       axios
          .get(
             "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
          )
-         .then(function (response) {
+         .then((res) => {
             // handle success
-            console.log(response);
+            console.log(res.data);
+            const memoryCards = res.data;
+            this.setState({
+               //change the state with this.setState
+               displayedMemoryCards: orderBy(
+                  memoryCards,
+                  ["createdAt"],
+                  ["desc"]
+               ),
+               allMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+            });
          })
-         .catch(function (error) {
+         .catch((error) => {
             // handle error
             console.log(error);
          });
-      this.state = {
-         order: '[["createdAt"], ["desc"]]',
-         displayedMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
-         allMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
-      };
    }
 
    filterByInput() {
