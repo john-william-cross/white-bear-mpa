@@ -14,18 +14,18 @@ const memoryCard = memoryCards[3];
 export default class Edit extends React.Component {
    constructor(props) {
       super(props);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
-         )
-         .then(function (response) {
-            // handle success
-            console.log(response);
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
+      // axios
+      //    .get(
+      //       "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
+      //    )
+      //    .then(function (response) {
+      //       // handle success
+      //       console.log(response);
+      //    })
+      //    .catch(function (error) {
+      //       // handle error
+      //       console.log(error);
+      //    });
       console.log(`in the edit component`);
       this.state = {
          answerText: memoryCard.answer,
@@ -229,3 +229,14 @@ export default class Edit extends React.Component {
       );
    }
 }
+
+/*
+
+editableCard: {
+   previousRoute: "",
+   card: {
+      // all the card properties
+   }
+}
+
+*/
