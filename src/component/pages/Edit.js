@@ -84,7 +84,7 @@ class Edit extends React.Component {
                         <div className="card">
                            <div className="card-body bg-primary">
                               <textarea
-                                 rows="6"
+                                 rows="4"
                                  defaultValue={
                                     this.props.editableCard.card.imagery
                                  }
@@ -96,7 +96,7 @@ class Edit extends React.Component {
                         <div className="card">
                            <div className="card-body bg-secondary">
                               <textarea
-                                 rows="6"
+                                 rows="4"
                                  defaultValue={
                                     this.props.editableCard.card.answer
                                  }
