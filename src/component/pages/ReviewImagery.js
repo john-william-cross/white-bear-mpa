@@ -29,7 +29,7 @@ class ReviewImagery extends React.Component {
                console.log(error);
             });
       }
-
+      //commit comment
       if (props.queue.index > props.queue.cards.length) {
          this.props.history.push("/review-empty");
       }
