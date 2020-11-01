@@ -107,6 +107,7 @@ export default class AllCards extends React.Component {
                      id="search-input"
                   />
                </div>
+               {/* comment */}
                <div className="col-4">
                   <button
                      className="btn btn-primary btn-block btn-sm"
