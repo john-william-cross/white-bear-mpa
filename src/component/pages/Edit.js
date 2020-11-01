@@ -224,13 +224,13 @@ class Edit extends React.Component {
                   <div className="clearfix"></div>
                   <div className="mb-4">
                      {this.state.isShowingDeleteButton && (
-                        <button
-                           type="button"
+                        <Link
+                           to="/all-cards"
                            className="btn btn-outline-danger"
                            id="delete-button"
                         >
                            Delete this card
-                        </button>
+                        </Link>
                      )}
                   </div>
                </>
