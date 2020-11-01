@@ -62,7 +62,6 @@ export default class AllCards extends React.Component {
       });
    }
 
-   // comment
    setOrder(e) {
       const newOrder = e.target.value;
       console.log(newOrder);
@@ -82,18 +81,6 @@ export default class AllCards extends React.Component {
       console.log(orderedMemoryCards);
       this.setState({ displayedMemoryCards: orderedMemoryCards });
    }
-
-   // setMemoryCardsOrder(e) {
-   //    console.log(`you've made a change!`); //41 minute mark is where things behave differently
-   //    const newOrder = e.target.value;
-   //    console.log(newOrder);
-   //    const copyOfMemoryCards = [...this.state.memoryCards];
-   //    const toJson = JSON.parse(newOrder);
-   //    console.log(...toJson);
-   //    const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
-   //    console.log(orderedMemoryCards);
-   //    this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
-   // }
 
    render() {
       return (

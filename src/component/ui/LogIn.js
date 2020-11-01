@@ -19,6 +19,23 @@ class LogIn extends React.Component {
       };
    }
 
+   componentDidMount() {
+      axios
+         .get(
+            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
+         )
+         .then((res) => {
+            // handle success
+
+            const currentUser = res.data;
+            console.log(currentUser);
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         });
+   }
+
    async setEmailState(emailInput) {
       const lowerCasedEmailInput = emailInput.toLowerCase();
       console.log(lowerCasedEmailInput);
