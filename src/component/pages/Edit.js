@@ -65,21 +65,10 @@ class Edit extends React.Component {
          type: actions.STORE_QUEUED_CARDS,
          payload: filteredCards,
       });
-      console.log(this.props.queue.index, filteredCards.length);
       if (filteredCards[this.props.queue.index] === undefined) {
-         console.log("YES THis iS UNDEFINED");
-         this.props.dispatch({
-            type: actions.DECREMENT_QUEUE_INDEX,
-         });
-      }
-   }
-
-   changeRoute(prevRoute) {
-      if (this.props.queue.index >= this.props.queue.length) {
-         return "/review-empty";
-      }
-      if (prevRoute === "/review-answer") {
-         return "/review-imagery";
+         this.props.history.push("/review-empty");
+      } else {
+         this.props.history.push("/review-imagery");
       }
    }
 
@@ -255,17 +244,14 @@ class Edit extends React.Component {
                   <div className="clearfix"></div>
                   <div className="mb-4">
                      {this.state.isShowingDeleteButton && (
-                        <Link
-                           to={this.changeRoute(
-                              this.props.editableCard.prevRoute
-                           )}
+                        <button
                            className="btn btn-outline-danger"
                            onClick={() => {
                               this.deleteCardFromStore();
                            }}
                         >
                            Delete this card
-                        </Link>
+                        </button>
                      )}
                   </div>
                </>

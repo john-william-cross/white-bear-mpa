@@ -18,7 +18,7 @@ class ReviewEmpty extends React.Component {
    render() {
       return (
          <AppTemplate>
-            <p className="text-center lead text-muted my-2">Outs of cards</p>
+            <p className="text-center lead text-muted my-2">Out of cards</p>
 
             {this.props.queue.index > 0 && (
                <button
