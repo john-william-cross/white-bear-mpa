@@ -4,6 +4,7 @@ import { v4 as getUuid } from "uuid";
 import { withRouter } from "react-router-dom";
 import hash from "object-hash";
 import { EMAIL_REGEX } from "../../utils/helpers";
+import axios from "axios";
 
 class LogIn extends React.Component {
    //we can set the state in constructor
