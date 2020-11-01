@@ -265,6 +265,7 @@ class Edit extends React.Component {
    }
 }
 
+//comment
 function mapStateToProps(state) {
    //Everything down here is global state
    return {
