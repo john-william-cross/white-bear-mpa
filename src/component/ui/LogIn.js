@@ -5,6 +5,8 @@ import { withRouter } from "react-router-dom";
 import hash from "object-hash";
 import { EMAIL_REGEX } from "../../utils/helpers";
 import axios from "axios";
+import actions from "../../store/actions";
+import { connect } from "react-redux";
 
 class LogIn extends React.Component {
    //we can set the state in constructor
@@ -18,23 +20,6 @@ class LogIn extends React.Component {
          hasEmailError: false,
          hasPasswordError: false,
       };
-   }
-
-   componentDidMount() {
-      axios
-         .get(
-            "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/b54bf16d605e58a8e356a74f939fc17e46537480/src/mock-data/memory-cards.json"
-         )
-         .then((res) => {
-            // handle success
-
-            const currentUser = res.data;
-            console.log(currentUser);
-         })
-         .catch((error) => {
-            // handle error
-            console.log(error);
-         });
    }
 
    async setEmailState(emailInput) {
@@ -69,22 +54,40 @@ class LogIn extends React.Component {
       }
    }
 
-   async validateUser() {
-      // is it ok to accept blank password here?
-      // should this function be called validateAndCreateUser still?
+   async validateAndLogInUser() {
       const emailInput = document.getElementById("signup-email-input").value;
       const passwordInput = document.getElementById("signup-password-input")
          .value;
+      console.log({ emailInput, passwordInput });
       await this.setEmailState(emailInput);
       await this.setPasswordState(passwordInput, emailInput);
       if (this.state.hasEmailError === false && passwordInput.length > 0) {
          const user = {
+            //creating that user here
             id: getUuid(),
             email: emailInput,
             createdAt: Date.now(),
             password: hash(passwordInput),
          };
-         console.log(user);
+         console.log("Created user object for POST: ", user);
+         // Mimic API response:
+         axios
+            .get(
+               "https://raw.githubusercontent.com/john-william-cross/white-bear-mpa/910aac8722e9f00ab98100e2eb50d90943f533f3/src/mock-data/user.json"
+            )
+            .then((res) => {
+               // handle success
+               const currentUser = res.data;
+               console.log(currentUser);
+               this.props.dispatch({
+                  type: actions.UPDATE_CURRENT_USER,
+                  payload: res.data,
+               });
+            })
+            .catch((error) => {
+               // handle error
+               console.log(error);
+            });
          //redirect the user
          this.props.history.push("/create-answer");
       }
@@ -132,7 +135,7 @@ class LogIn extends React.Component {
                      className="float-right btn btn-success btn-sm mt-2"
                      id="login-button"
                      onClick={() => {
-                        this.validateUser();
+                        this.validateAndLogInUser();
                      }}
                   >
                      Log in
@@ -144,4 +147,10 @@ class LogIn extends React.Component {
    }
 }
 
-export default withRouter(LogIn);
+function mapStateToProps(state) {
+   //Everything down here is global state
+   //return whatever we want to pass from the global state into the properties
+   return {}; //we don't need any redux global state, but if we do we can grab it from redux global state and map it to this props for this component. Until then we'll return a blank object.
+}
+
+export default withRouter(connect(mapStateToProps)(LogIn));

@@ -5,6 +5,7 @@ import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import { withRouter } from "react-router-dom";
 import { EMAIL_REGEX } from "../../utils/helpers";
+import { connect } from "react-redux";
 
 //functions go in react classes
 class SignUp extends React.Component {
@@ -200,4 +201,9 @@ class SignUp extends React.Component {
       );
    }
 }
-export default withRouter(SignUp);
+function mapStateToProps(state) {
+   //Everything down here is global state
+   return {};
+}
+
+export default connect(mapStateToProps)(SignUp);
