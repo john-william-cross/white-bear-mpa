@@ -65,9 +65,13 @@ class Edit extends React.Component {
          type: actions.STORE_QUEUED_CARDS,
          payload: filteredCards,
       });
-      this.props.dispatch({
-         type: actions.DECREMENT_QUEUE_INDEX,
-      });
+      console.log(this.props.queue.index, filteredCards.length);
+      if (filteredCards[this.props.queue.index] === undefined) {
+         console.log("YES THis iS UNDEFINED");
+         this.props.dispatch({
+            type: actions.DECREMENT_QUEUE_INDEX,
+         });
+      }
    }
 
    changeRoute(prevRoute) {
