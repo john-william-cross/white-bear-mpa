@@ -65,9 +65,15 @@ class Edit extends React.Component {
          type: actions.STORE_QUEUED_CARDS,
          payload: filteredCards,
       });
+      this.props.dispatch({
+         type: actions.DECREMENT_QUEUE_INDEX,
+      });
    }
 
    changeRoute(prevRoute) {
+      if (this.props.queue.index >= this.props.queue.length) {
+         return "/review-empty";
+      }
       if (prevRoute === "/review-answer") {
          return "/review-imagery";
       }
