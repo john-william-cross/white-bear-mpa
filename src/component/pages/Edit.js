@@ -9,7 +9,8 @@ import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 import { safelyParseJson } from "../../utils/helpers";
 import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
-
+import without from "lodash/without";
+import actions from "../../store/actions";
 // import axios from "axios";
 
 const memoryCard = memoryCards[3];
@@ -53,6 +54,23 @@ class Edit extends React.Component {
    setAnswerText(e) {
       this.setState({ answerText: e.target.value });
       console.log(e.target.value);
+   }
+
+   deleteCardFromStore() {
+      const deletedCard = this.props.editableCard.card;
+      const cards = this.props.queue.cards;
+      const filteredCards = without(cards, deletedCard);
+      console.log(filteredCards);
+      this.props.dispatch({
+         type: actions.STORE_QUEUED_CARDS,
+         payload: filteredCards,
+      });
+   }
+
+   changeRoute(prevRoute) {
+      if (prevRoute === "/review-answer") {
+         return "/review-imagery";
+      }
    }
 
    render() {
@@ -118,11 +136,14 @@ class Edit extends React.Component {
                      </div>
                   </div>
                   <div className="mt-n5">
-                     <Link to="/all-cards" className="btn btn-link mb-5">
+                     <Link
+                        to={this.props.editableCard.prevRoute}
+                        className="btn btn-link mb-5"
+                     >
                         Discard changes
                      </Link>
                      <Link
-                        to="/all-cards"
+                        to={this.props.editableCard.prevRoute}
                         className={classnames(
                            "btn btn-primary btn-lg float-right",
                            {
@@ -225,9 +246,13 @@ class Edit extends React.Component {
                   <div className="mb-4">
                      {this.state.isShowingDeleteButton && (
                         <Link
-                           to="/all-cards"
+                           to={this.changeRoute(
+                              this.props.editableCard.prevRoute
+                           )}
                            className="btn btn-outline-danger"
-                           id="delete-button"
+                           onClick={() => {
+                              this.deleteCardFromStore();
+                           }}
                         >
                            Delete this card
                         </Link>
@@ -243,19 +268,10 @@ class Edit extends React.Component {
 function mapStateToProps(state) {
    //Everything down here is global state
    return {
+      //if you need to access something, put it here
       editableCard: state.editableCard,
+      queue: state.queue,
    };
 }
 
 export default connect(mapStateToProps)(Edit);
-
-/*
-
-editableCard: {
-   previousRoute: "",
-   card: {
-      // all the card properties
-   }
-}
-
-*/
