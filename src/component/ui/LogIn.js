@@ -12,7 +12,7 @@ class LogIn extends React.Component {
    //we can set the state in constructor
    constructor(props) {
       super(props);
-      console.log("In a new class component!");
+      // console.log("In a new class component!");
       this.state = {
          isDisplayingInputs: false,
          emailError: "",

@@ -39,7 +39,6 @@ class SignUp extends React.Component {
             hasEmailError: true,
          });
       else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
-         console.log("not a valid email");
          this.setState({
             emailError: "Please enter a valid email address.",
             hasEmailError: true,
@@ -60,7 +59,6 @@ class SignUp extends React.Component {
       console.log(passwordInput);
 
       const uniqChars = [...new Set(passwordInput)];
-      console.log(uniqChars);
 
       if (passwordInput === "") {
          this.setState({
@@ -113,8 +111,6 @@ class SignUp extends React.Component {
             )
             .then((res) => {
                // handle success
-               const currentUser = res.data;
-               console.log(currentUser);
                this.props.dispatch({
                   type: actions.UPDATE_CURRENT_USER,
                   payload: res.data,

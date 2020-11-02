@@ -7,7 +7,7 @@ import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 export default class CreateAnswer extends React.Component {
    constructor(props) {
       super(props);
-      console.log(`in the edit component`);
+      // console.log(`in the edit component`);
       this.state = {
          answerText: "",
       };
@@ -23,7 +23,7 @@ export default class CreateAnswer extends React.Component {
    }
    setAnswerText(e) {
       this.setState({ answerText: e.target.value });
-      console.log(e.target, e.target.value);
+      // console.log(e.target, e.target.value);
    }
 
    render() {
