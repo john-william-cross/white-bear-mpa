@@ -28,6 +28,7 @@ class ReviewAnswer extends React.Component {
    storeEditableCard() {
       console.log("STORING EDITABLE CARD");
       const memoryCard = this.props.queue.cards[this.props.queue.index];
+      console.log("HERE's THE MEMORY CARD WE STORED", memoryCard);
       this.props.dispatch({
          type: actions.STORE_EDITABLE_CARD,
          payload: { card: memoryCard, prevRoute: "/review-answer" },
